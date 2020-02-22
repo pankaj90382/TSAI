@@ -38,4 +38,22 @@ Observations - Wow, by introducing only batch normalization, my model's initial 
 ------------------------------------------------------------------------------------------------
 Approach 3
 
-Problem - Remove the overfitting
+Problem - Remove the overfitting.
+Solutions - The overfitting problem can be resolved by training the smaller parameter network. By using dropout we can reduce the overfitting. By increasing the data by (data augmentation, resize, crop, color jitter) images to train. 
+
+By dropout - 
+Starting from the values of 0.1. The overfitting problem is reduced. It also underfit the model. So tunning the parameter hold between 0.01 to 0.03. It will not help to reduce the overfitting. When we facing the problem in second decimal.
+
+By - reducing parameter
+I reduced the parameter be in 10 k. The overfit problem is reduced little bit. This approach is effective in terms of dropout.
+
+By - data augmentation (Rotate)
+With the help of rotate the overfit is reduced.
+
+Adopted Method - Reducing parameter--> Data Augmentation
+
+Used parameters - 9,678
+Human's based performance -99.7
+Maximum Train Accuracy Achieved -99.2
+Maximum Test Accuracy Achieved - 99.44
+Maximum - Epoch -15
