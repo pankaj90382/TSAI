@@ -63,7 +63,7 @@ Maximum - Epoch -15<br>
 **Observations** - *Model is slightly overfitting the data in epoch number 9,10. The overfitting is for .20-.30. By looking at the graph's there are too much flucations in the test error and test accuracy.*<br>
 
 ---------------------------------------------------------------------------------------------------------------------------------
-*Approach 4* - <br>
+**Approach 4** - <br>
 
 *Problem* - Reduce overfitting and flucations in the test error/test accuracy<br>
 *Solution* - Use the different learning rate and slight data augmentation change parameter.<br>
@@ -78,7 +78,7 @@ Consistency in result - 4 epoch<br>
 **Observtion** - *Fluctations reduced by the learning rate decay. From epoch 16 to 20, the consistency is greater than 99.4. According to the target, the results are lagging little bit. Trying to reach the target in next approach.*<br>
 
 ----------------------------------------------------------------------------------------------------------------------
-*Approach 5* - <br>
+**Approach 5** - <br>
 
 *Problem* - Reach the 99.4 consistent in 15 epoch.<br> 
 *Solution* - Reducing the Batch size so that it can learn more faster. To buzz my accuracy greater than 99.4, i also adjust the learning rate, probably increase the learn rate. I will reduce the step size of step lr because my model will learn more faster due to reduced batch size.<br>
