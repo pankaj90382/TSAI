@@ -57,3 +57,8 @@ Human's based performance -99.7
 Maximum Train Accuracy Achieved -99.2
 Maximum Test Accuracy Achieved - 99.44
 Maximum - Epoch -15
+
+Observations - Model is slightly overfitting the data in epoch number 9,10. The overfitting is for .20-.30. By looking at the graph's there are too much flucations in the test error and test accuracy.
+---------------------------------------------------------------------------------------------------------------------------------
+Approach 4 -
+
