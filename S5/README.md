@@ -62,3 +62,17 @@ Observations - Model is slightly overfitting the data in epoch number 9,10. The 
 ---------------------------------------------------------------------------------------------------------------------------------
 Approach 4 -
 
+Problem - Reduce overfitting and flucations in the test error/test accuracy
+Solution - Use the different learning rate and slight data augmentation change parameter.
+
+Used parameters - 9,678
+Human's based performance -99.7
+Maximum Train Accuracy Achieved -99.2
+Maximum Test Accuracy Achieved - 99.44
+Maximum - Epoch -20
+Consistency in result - 4 epoch
+
+Observtion - Fluctations reduced by the learning rate decay. From epoch 16 to 20, the consistency is greater than 99.4. According to the target, the results are lagging little bit. Trying to reach the target in next approach.
+----------------------------------------------------------------------------------------------------------------------
+Approach 5 -
+
