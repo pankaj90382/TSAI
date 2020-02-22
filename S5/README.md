@@ -76,3 +76,15 @@ Observtion - Fluctations reduced by the learning rate decay. From epoch 16 to 20
 ----------------------------------------------------------------------------------------------------------------------
 Approach 5 -
 
+Problem - Reach the 99.4 consistent in 15 epoch. 
+Solution - Reducing the Batch size so that it can learn more faster. To buzz my accuracy greater than 99.4, i also adjust the learning rate, probably increase the learn rate. I will reduce the step size of step lr because my model will learn more faster due to reduced batch size.
+
+Used parameters - 9,678
+Human's based performance -99.7
+Maximum Train Accuracy Achieved -99.17
+Maximum Test Accuracy Achieved - 99.47
+Maximum - Epoch -15
+Consistency in result - Last 9 epoch
+
+Observation - Targets are achieved.
+-----------------------------------------------------------------------------------------------------------------------------
