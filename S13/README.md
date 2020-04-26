@@ -2,7 +2,8 @@
 
 ## Part 1 - YoloV3 with OpenCV Implementation
 
-SOURCE :[![OpenCV Yolo](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
+SOURCE:
+[![OpenCV Yolo](https://docs.opencv.org/master/opencv-logo-small.png)](https://pysource.com/2019/06/27/yolo-object-detection-using-opencv-with-python/)
 
 Detecting objects in an image where there is a person, laptop and table in the image.  
 _Note_: The objects are the classes of Coco Model. The Object should be present in the COCO classes.
@@ -10,11 +11,11 @@ _Note_: The objects are the classes of Coco Model. The Object should be present 
 ### Result
 
 <p style='text-align:center;'>
-  <img src="S13_Yolo_OpenCV/Anonnate.jpg" />
+  <img src="S13_Yolo_OpenCV/Annonate.png" />
 </p>
 
 ## Part 2 - Custom Object Detections YOLO v3 with PyTorch
-SOURCE : [![YoloV3]] (https://github.com/ultralytics/yolov3)
+SOURCE : [![YoloV3](https://pjreddie.com/media/image/yologo_2.png)] (https://github.com/ultralytics/yolov3)
 
 Object detection with Yolo v3 using transfer learning on a class that doesn't belong to COCO dataset.
 
@@ -34,9 +35,13 @@ Click on the video below to play
 ### Dataset Preparation
 
 - Created a custom dataset of 500 images of **SpongeBob**.
-- Annotated the custom dataset using [https://github.com/miki998/YoloV3_Annotation_Tool](https://github.com/miki998/YoloV3_Annotation_Tool)
-- Trained YoloV3 using https://github.com/theschoolofai/YoloV3](https://github.com/theschoolofai/YoloV3)
-- Download from [link](https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0)
+- Annotated the custom dataset using [link](https://github.com/miki998/YoloV3_Annotation_Tool)
+- Trained YoloV3 using [link](https://github.com/theschoolofai/YoloV3)
+
+### Downloading Pre-Trained Weights
+
+Download the file named `yolov3-spp-ultralytics.pt` from this [link](https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0) 
+
 #### Train Data
 Please change in the Yolo Config file for Single Class/Object.
 
@@ -53,18 +58,14 @@ Run the algorithm for 300 epochs, check out your accuracy, the result will be am
 #### Test Data
 
 - Download a short-duration video containing the class used during training.
-- Extract frames from the video into the [test](YoloV3/data/test) directory  
+- Extract frames from the video into the test directory  
   `ffmpeg -i video.mp4 output/img%3d.jpg`
 - Extract audio from the video (this audio will be required later)  
   `ffmpeg -i 'input video' -f mp3 -ab 192000 -vn music.mp3`  
 
-### Downloading Pre-Trained Weights
-
-Download the file named `yolov3-spp-ultralytics.pt` from this [link](https://drive.google.com/open?id=1LezFG5g3BCW6iYaV89B2i64cqEUZD7e0) and place it in [this](YoloV3/weights) directory.
-
 ### Inference on a Video
 
-- To Combine the images from the [output](YoloV3/output) directory to form a video  
+- To Combine the images from the output directory to form a video  
   `ffmpeg -framerate 24 -i YoloV3/output/img%3d.jpg -r 24 -y out_video.mp4`
 - Combine the audio file extracted earlier with the output video to produce final output  
   `ffmpeg -i 'input video' -i music.mp3 -c:v copy -c:a copy 'output video'`
