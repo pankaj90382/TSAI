@@ -15,7 +15,7 @@ _Note_: The objects are the classes of Coco Model. The Object should be present 
 </p>
 
 ## Part 2 - Custom Object Detections YOLO v3 with PyTorch
-SOURCE : [![YoloV3](<img src="https://pjreddie.com/media/image/yologo_2.png" width="50" height="50"/>)] (https://github.com/ultralytics/yolov3)
+SOURCE : [YoloV3](https://github.com/ultralytics/yolov3)
 
 Object detection with Yolo v3 using transfer learning on a class that doesn't belong to COCO dataset.
 
