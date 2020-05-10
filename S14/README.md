@@ -99,9 +99,9 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 7zip is the best compression to zip the data and load the data. The commands to zip and extract the data. 
 
 - To zip the data<br> 
-`!7z`
+`!7z a outputfilename sourcetobezipped`
 - To extract the data<br>
-`!7z`
+`!7z x sourcepath -o destpath`
 
 # Dataset Visualization
 <img src="images/dataset.png">
