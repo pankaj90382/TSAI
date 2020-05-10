@@ -25,7 +25,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Each image was resized to 224 x 224
  - Number of images after resizing: 100
  - Image dimensions: ( 3)
- - Directory size: 
+ - Directory size: 2.5 M
  - Mean: []
  - Std: []
 
@@ -47,7 +47,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 	 - Flip the foreground and again overlay it randomly 20 times on the background
  - Number of images: 100\*100\*2\*20 = 400,000
  - Image dimensions: (224, 224, 3)
- - Directory size: 1.1 G
+ - Directory size: 9.8 G
  - Mean: []
  - Std: []
 
@@ -59,7 +59,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  -  Image was stored as a grayscale image.
  - Number of images: 400,000
  - Image dimensions: (224, 224)
- - Compressed Directory size: 241 M
+ - Directory size: 1.7G
  - Mean: []
  - Std: []
 
