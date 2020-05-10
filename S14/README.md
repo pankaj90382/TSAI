@@ -17,7 +17,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 6. **Foreground overlayed on background depth maps (fg_bg_depth):** Create equivalent depth maps for fg_bg images.<br>
 *Sol* - For creating the depth map, used the code [DenseDepth](https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb) by using **NYU Depth V2** model weights. The model Weights can be downloaded from this [link](https://s3-eu-west-1.amazonaws.com/densedepth/nyu.h5). 
 
-### Dataset Creation
+# Dataset Creation
 
 #### Background (bg)
  - I have created the dataset of school images.
@@ -77,7 +77,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 
 <img src="images/fg_bg_depth.png">
 
-### Dataset Statistics
+# Dataset Statistics
 
 |  | # | dim | mean | std | size | img |
 |---|---|---|---|---|---|---|
@@ -95,18 +95,18 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 	 - Zip: 2G
 	 - Unzip: 12G 
 	 
-### 7z to zip the data
+# 7z to zip the data
 7zip is the best compression to zip the data and load the data. The commands to zip and extract the data. 
 
--To zip the data 
+- To zip the data<br> 
 `!7z`
-- To extract the data
+- To extract the data<br>
 `!7z`
 
-### Dataset Visualization
+# Dataset Visualization
 <img src="images/dataset.png">
 
-### Resources
+# Resources
 
  - Code to overlay foreground on background and corresponding masks: 
 	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
