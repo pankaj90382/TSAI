@@ -109,8 +109,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 # Resources
 
  - Code to overlay foreground on background and corresponding masks: 
-	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/pankaj90382/TSAI/blob/master/S14/DatasetPreparation.ipynb)
  - Code to generate depth maps for foreground overlayed on background: 
-	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
+	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/pankaj90382/TSAI/blob/master/S14/DenseDepthMap.ipynb)
  - Code to compute the combine the dataset and analyse the statistics:
 	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
