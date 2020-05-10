@@ -24,7 +24,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - 174 images of school were downloaded from the internet.
  - Each image was resized to 224 x 224
  - Number of images after resizing: 100
- - Image dimensions: ( 3)
+ - Image dimensions: (224, 224, 3)
  - Directory size: 2.5 M
  - Mean: []
  - Std: []
@@ -82,7 +82,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 |  | # | dim | mean | std | size | img |
 |---|---|---|---|---|---|---|
 | **bg** | 100 | (224,224,3) | (0.5039, 0.5001, 0.4849) | (0.2465, 0.2463, 0.2582) | 2.5M | <img src="Save_Data/bg.jpg"> |
-| **fg** | 100 | (105,w,4) |  |  | 1.2M | <img src="Save_Data/fg.png"> |
+| **fg** | 100 | (100,100,4) |  |  | 1M | <img src="Save_Data/fg.png"> |
 | **fg_bg** | 400k | (224,224,3) | (0.5056, 0.4969, 0.4817) | (0.2486, 0.2490, 0.2604) | 9.8G |  <img src="Save_Data/fgbg.jpg"> |
 | **fg_bg_mask** | 400k | (224,224) | (0.0454) | (0.2038) | 1.7G | <img src="Save_Data/mask.jpg"> |
 | **fg_bg_depth** | 400k | (224,224) | (0.4334) | (0.2715) | 1.6G | <img src="Save_Data/dense.jpg"> |
