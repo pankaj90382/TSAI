@@ -90,10 +90,10 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 
 ### Dataset Link
 
- - Link: https://drive.google.com/file/d/1KY-6ndddnDSXTp974YeubFKEMTbKmqiH/view?usp=sharing
+ - Link: 
  - Size:
-	 - Zip: 5G
-	 - Unzip: 7.3G 
+	 - Zip: 2G
+	 - Unzip: 12G 
 
 ### Dataset Visualization
 <img src="images/dataset.png">
@@ -101,9 +101,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 ### Resources
 
  - Code to overlay foreground on background and corresponding masks: 
-	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uday96/EVA4-TSAI/blob/master/S14-15/EVA4_S15A_gen_fg_bg.ipynb)
+	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
  - Code to generate depth maps for foreground overlayed on background: 
-	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uday96/EVA4-TSAI/blob/master/S14-15/EVA4_S15A_gen_fg_bg_depth_maps.ipynb)
-	 - [Forked Repo](https://github.com/uday96/DenseDepth/tree/cars_fg)
+	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
  - Code to compute the combine the dataset and analyse the statistics:
-	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/uday96/EVA4-TSAI/blob/master/S14-15/EVA4_S15A_data_statistics.ipynb)
+	 - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]()
