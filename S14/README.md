@@ -94,6 +94,14 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Size:
 	 - Zip: 2G
 	 - Unzip: 12G 
+	 
+### 7z to zip the data
+7zip is the best compression to zip the data and load the data. The commands to zip and extract the data. 
+
+-To zip the data 
+`!7z`
+- To extract the data
+`!7z`
 
 ### Dataset Visualization
 <img src="images/dataset.png">
