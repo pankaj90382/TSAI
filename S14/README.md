@@ -50,8 +50,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Number of images: 100\*100\*2\*20 = 400,000
  - Image dimensions: (224, 224, 3)
  - Directory size: 9.8 G
- - Mean: []
- - Std: []
+ - Mean: [0.49641467, 0.50198746, 0.48275208]
+ - Std: [0.2798614 , 0.27848746, 0.31762387]
 
 <img src="images/fg_bg.png">
 
@@ -85,7 +85,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 |---|---|---|---|---|---|---|
 | **bg** | 100 | (224,224,3) | (0.49836101, 0.50576683, 0.48631948) | (0.27918635, 0.27833673, 0.31944063) | 2.5M | <img src="Save_Data/bg.jpg"> |
 | **fg** | 100 | (100,100,4) | (0.10724495, 0.09750263, 0.09101623, 0.22677654) | (0.22944672, 0.2064019 , 0.19510001, 0.4096344 ) | 1M | <img src="Save_Data/fg.png"> |
-| **fg_bg** | 400k | (224,224,3) | (0.5056, 0.4969, 0.4817) | (0.2486, 0.2490, 0.2604) | 9.8G |  <img src="Save_Data/fgbg.jpg"> |
+| **fg_bg** | 400k | (224,224,3) | (0.49641467, 0.50198746, 0.48275208) | (0.2798614 , 0.27848746, 0.31762387) | 9.8G |  <img src="Save_Data/fgbg.jpg"> |
 | **fg_bg_mask** | 400k | (224,224) | (0.05250582) | (0.22033702) | 1.7G | <img src="Save_Data/mask.jpg"> |
 | **fg_bg_depth** | 400k | (224,224) | (0.41627218) | (0.25850094) | 1.6G | <img src="Save_Data/dense.jpg"> |
 
