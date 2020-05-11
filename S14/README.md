@@ -26,8 +26,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Number of images after resizing: 100
  - Image dimensions: (224, 224, 3)
  - Directory size: 2.5 M
- - Mean: []
- - Std: []
+ - Mean: [0.49836101, 0.50576683, 0.48631948]
+ - Std: [0.27918635, 0.27833673, 0.31944063]
 
 <img src="images/bg.png">
 
@@ -38,6 +38,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Number of images: 100
  - Image dimensions: (100, 100, 4)
  - Directory size: 1 M
+ - Mean: [0.10724495, 0.09750263, 0.09101623, 0.22677654]
+ - Std: [0.22944672, 0.2064019 , 0.19510001, 0.4096344 ]
 
 <img src="images/fg.png">
 
@@ -60,8 +62,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Number of images: 400,000
  - Image dimensions: (224, 224)
  - Directory size: 1.7G
- - Mean: []
- - Std: []
+ - Mean: [0.05250582]
+ - Std: [0.22033702]
 
 <img src="images/fg_bg_mask.png">
 
@@ -72,8 +74,8 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Number of images: 400,000
  - Image dimensions: (224, 224)
  - Directory size: 1.6G
- - Mean: [0.4334]
- - Std: [0.2715]
+ - Mean: [0.41627218]
+ - Std: [0.25850094]
 
 <img src="images/fg_bg_depth.png">
 
@@ -81,18 +83,18 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 
 |  | # | dim | mean | std | size | img |
 |---|---|---|---|---|---|---|
-| **bg** | 100 | (224,224,3) | (0.5039, 0.5001, 0.4849) | (0.2465, 0.2463, 0.2582) | 2.5M | <img src="Save_Data/bg.jpg"> |
-| **fg** | 100 | (100,100,4) |  |  | 1M | <img src="Save_Data/fg.png"> |
+| **bg** | 100 | (224,224,3) | (0.49836101, 0.50576683, 0.48631948) | (0.27918635, 0.27833673, 0.31944063) | 2.5M | <img src="Save_Data/bg.jpg"> |
+| **fg** | 100 | (100,100,4) | (0.10724495, 0.09750263, 0.09101623, 0.22677654) | (0.22944672, 0.2064019 , 0.19510001, 0.4096344 ) | 1M | <img src="Save_Data/fg.png"> |
 | **fg_bg** | 400k | (224,224,3) | (0.5056, 0.4969, 0.4817) | (0.2486, 0.2490, 0.2604) | 9.8G |  <img src="Save_Data/fgbg.jpg"> |
-| **fg_bg_mask** | 400k | (224,224) | (0.0454) | (0.2038) | 1.7G | <img src="Save_Data/mask.jpg"> |
-| **fg_bg_depth** | 400k | (224,224) | (0.4334) | (0.2715) | 1.6G | <img src="Save_Data/dense.jpg"> |
+| **fg_bg_mask** | 400k | (224,224) | (0.05250582) | (0.22033702) | 1.7G | <img src="Save_Data/mask.jpg"> |
+| **fg_bg_depth** | 400k | (224,224) | (0.41627218) | (0.25850094) | 1.6G | <img src="Save_Data/dense.jpg"> |
 
 ### Dataset Link
 
  - Link: 
  - Size:
-	 - Zip: 2G
-	 - Unzip: 12G 
+	 - Zip: 2.13G
+	 - Unzip: 13G 
 	 
 # 7z to zip the data
 7zip is the best compression to zip the data and load the data. The commands to zip and extract the data. 
