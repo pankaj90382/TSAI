@@ -29,7 +29,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Mean: [0.49836101, 0.50576683, 0.48631948]
  - Std: [0.27918635, 0.27833673, 0.31944063]
 
-<img src="images/bg.png">
+<img src="Save_Data/Sample_Bg_Images.jpg">
 
 #### Foreground (fg)
  - 100 images of different objects were downloaded from the internet.
@@ -41,7 +41,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Mean: [0.10724495, 0.09750263, 0.09101623, 0.22677654]
  - Std: [0.22944672, 0.2064019 , 0.19510001, 0.4096344 ]
 
-<img src="images/fg.png">
+<img src="Save_Data/Sample_Fg_Images.jpg">
 
 #### Foreground Overlayed on Background (fg_bg)
  - For each background
@@ -53,7 +53,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Mean: [0.49641467, 0.50198746, 0.48275208]
  - Std: [0.2798614 , 0.27848746, 0.31762387]
 
-<img src="images/fg_bg.png">
+<img src="Save_Data/Sample_FgBg_Images.jpg">
 
 #### Foreground Overlayed on Background Mask (fg_bg_mask)
  - For every foreground overlayed on background, its corresponding mask was created.
@@ -65,7 +65,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Mean: [0.05250582]
  - Std: [0.22033702]
 
-<img src="images/fg_bg_mask.png">
+<img src="Save_Data/Sample_FgBg_Masks_Images.jpg">
 
 #### Foreground Overlayed on Background Depth Map (fg_bg_depth)
  - For every foreground overlayed on background, its corresponding depth map was generated.
@@ -77,7 +77,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
  - Mean: [0.41627218]
  - Std: [0.25850094]
 
-<img src="images/fg_bg_depth.png">
+<img src="Save_Data/Sample_FgBg_Dense_Images.jpg">
 
 # Dataset Statistics
 
@@ -105,7 +105,7 @@ Create a custom dataset for monocular depth estimation and segmentation simultan
 `!7z x sourcepath -o destpath`
 
 # Dataset Visualization
-<img src="images/dataset.png">
+<img src="Save_Data/Sample_DataSet.jpg">
 
 # Resources
 
