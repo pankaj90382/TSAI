@@ -183,7 +183,7 @@ In the BCELoss, i got the nan loss and the prediction is totaly blank after 600 
 </figure>
 
 <figure>
-    <figcaption>Preds->DENSEDEPTH</figcaption>
+    <figcaption>Output->DENSEDEPTH</figcaption>
     <img src='Save_Model/MSE_Loss_224/Output_Dense.jpg' alt='missing' />
 </figure>
 
@@ -202,4 +202,29 @@ For `224x224` each epoch was taking ~7hrs to train. So I was able to train it fo
 
 ### Tensorboard
 
+TensorBoard provides the visualization and tooling needed for deep learning experimentation:
+- Tracking and visualizing metrics such as loss and accuracy
+- Viewing histograms of weights, biases, or other tensors as they change over time
+- Projecting embeddings to a lower dimensional space
+- Displaying images, text, and audio data
 
+Tensorboard is easy to apply in the code. In the colab, by following code will help you to show the tensorboard on screen. Later on you can save the files to your drive. It can be downloaded also. It can be showable.
+
+`%load_ext tensorboard
+%tensorboard --logdir '/content/tensorboard/'`
+
+You will be able to visualize the multiple looses and images at one place.
+
+<figure>
+    <figcaption>Tensorboard Losses</figcaption>
+    <img src='Save_Model/tensorboard.jpg' alt='missing' />
+</figure>
+
+<figure>
+    <figcaption>Tensorboard Images</figcaption>
+    <img src='Save_Model/tensorboard_images.JPG' alt='missing' />
+</figure>
+
+# Refrences
+
+- Tensorboard files
