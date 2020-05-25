@@ -4,7 +4,7 @@
 
 
 ### Objective
-In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, predict [denseDepth](https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb) map from an image with foreground objects and background image, mask for the foreground object as ground truth . In S15, apply various transformations and prepare the model to get the same groundtruths.
+In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, predict [denseDepth](https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb) map from an image with foreground objects and background image, mask for the foreground object as ground truth . In S15, apply various transformations and prepare the model to get the same ground truth.
 
 ### Dataset Info
 
@@ -211,6 +211,7 @@ TensorBoard provides the visualization and tooling needed for deep learning expe
 Tensorboard is easy to apply in the code. In the colab, by following code will help you to show the tensorboard on screen. Later on you can save the files to your drive. It can be downloaded also. It can be showable.
 
 `%load_ext tensorboard`
+
 `%tensorboard --logdir '/content/tensorboard/'`
 
 You will be able to visualize the multiple looses and images at one place.
