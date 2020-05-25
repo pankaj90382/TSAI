@@ -145,12 +145,12 @@ In the BCELoss, i got the nan loss and the prediction is totaly blank after 600 
 
 <figure>
     <figcaption>Inputs->BG->FGBG</figcaption>
-    <img src='Save_Model/MSE_Loss_128/Inputs.jpg' alt='missing' />
+    <img src='Save_Model/MSE_Loss_128/Input.jpg' alt='missing' />
 </figure>
 
 <figure>
     <figcaption>Outputs->DENSEDEPTH->FGBGMASK</figcaption>
-    <img src='Save_Model/MSE_Loss_128/Actuals.jpg' alt='missing' />
+    <img src='Save_Model/MSE_Loss_128/Actual.jpg' alt='missing' />
 </figure>
 
 <figure>
@@ -158,18 +158,18 @@ In the BCELoss, i got the nan loss and the prediction is totaly blank after 600 
     <img src='Save_Model/MSE_Loss_128/Pred.jpg' alt='missing' />
 </figure>
 
-:+1: In this one also, i am not getting good results. I have tried the another loss function
+:+1: Visually Good Images, better than other losses. I trained on even bigger resolution like 224 *224.
 
 - **Attempt 3**:- As, I get very faded results in first attempt so I have used the image with high resolution 128, 128. So i trained the complete dataset on 128, 128 for 3 epochs by taking the previous weights.
 
 <figure>
     <figcaption>Inputs->BG->FGBG</figcaption>
-    <img src='Save_Model/BCE_Logits_Loss_128/Inputs.jpg' alt='missing' />
+    <img src='Save_Model/BCE_Logits_Loss_128/Input.jpg' alt='missing' />
 </figure>
 
 <figure>
     <figcaption>Outputs->DENSEDEPTH->FGBGMASK</figcaption>
-    <img src='Save_Model/BCE_Logits_Loss_128/Actuals.jpg' alt='missing' />
+    <img src='Save_Model/BCE_Logits_Loss_128/Actual.jpg' alt='missing' />
 </figure>
 
 <figure>
