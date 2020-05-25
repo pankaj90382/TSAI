@@ -7,6 +7,7 @@
 In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, predict [denseDepth](https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb) map from an image with foreground objects and background image, mask for the foreground object as ground truth . In S15, apply various transformations and prepare the model to get the same groundtruths.
 
 ### Dataset Info
+
 A custom dataset will be used to train model, which consists of:
 - 100 background images
 - 400k foreground overlayed on background images
@@ -16,6 +17,7 @@ A custom dataset will be used to train model, which consists of:
 Session 14 Link: [https://github.com/pankaj90382/TSAI/tree/master/S14](https://github.com/pankaj90382/TSAI/tree/master/S14)
 
 #### Notations
+
 - Background image: **bg**
 - Foregroung overlayed on background: **fgbg**
 - Mask for fg_bg: **fgbgmask**
@@ -24,20 +26,24 @@ Session 14 Link: [https://github.com/pankaj90382/TSAI/tree/master/S14](https://g
 - Depth map prediction: **pred_depth**
 
 ### Model Architecture 
+
 The model follows an combination of Densenet and Unet Architecture. The Densenet Structure to predict the mask images. The Unet structure to predict the dense images.
 
 #### Unet
+
 - First path in Unet is contraction path (also called as the encoder) which is used to capture the context in the image.
 - Second path in Unet is symmetric expanding path (also called as the decoder) which is used to enable precise localization using transposed convolutions. 
 
 <img src="https://miro.medium.com/max/1400/1*OkUrpDD6I0FpugA_bbYBJQ.png" height="400">
 
 #### Densenet
+
 - Densenet connects each layer to every other layer in a feed-forward fashion.
 - For each layer, the feature-maps of all preceding layers are used as inputs, and its own feature-maps are used as inputs into all subsequent layers.
 <img src="https://miro.medium.com/max/1400/1*_Y7-f9GpV7F93siM1js0cg.jpeg" height="250">
 
 ### My model
+
 Model definition file: [Please refer to the Class UnetExp](https://github.com/pankaj90382/TSAI/blob/master/S15/S15_Modular_Code/Model.py)
 
 #### Model Structure and Parameters Count
@@ -56,9 +62,11 @@ Model definition file: [Please refer to the Class UnetExp](https://github.com/pa
 -   L2 decay: 0.001
 
 ### Load to Colab, DataSet, Dataloader
-Great thanks to 7z, Pathlib library to read the data from the google drive. 7z to load the data from the google drive to colab in 10 minutes without uploading zip file to colab. I can choose how many samples i need to load to the colab. 13 Gb data converted to 2 Gb in compress format. Pathlib library enables me to load all my bg, fgbg, fgbgdepth, fgbgmask fromone list. I need not to create the 4 lists. From the one list i am able to load my images to GPU. However, there is a challenge to not to replicate bg files upto 400k times which is also achieved by using the Pathlib library. The dataloader is simple to load all the files to GPU. I have created the dataset with two dict, one is input and another is target which again contanins bg, fgbg and fgbgmask and fgbgdepth images.
+
+Great thanks to `7z, Pathlib` library to read the data from the google drive. 7z to load the data from the google drive to colab in 10 minutes without uploading zip file to colab. I can choose how many samples i need to load to the colab. 13 Gb data converted to 2 Gb in compress format. Pathlib library enables me to load all my bg, fgbg, fgbgdepth, fgbgmask fromone list. I need not to create the 4 lists. From the one list i am able to load my images to GPU. However, there is a challenge to not to replicate bg files upto 400k times which is also achieved by using the Pathlib library. The dataloader is simple to load all the files to GPU. I have created the dataset with two dict, one is input and another is target which again contanins bg, fgbg and fgbgmask and fgbgdepth images.
 
 ### Image Augmentation
+
 I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation. There is small anomaly when you load the grayscale images like fgbgmask and fgbgdense by using albumenations. The image shape is when you read through PIL is (H, W). By default the Albumenations need the channel also. I converted grayscale images to nd array to create the one new dimension.
 
 - **Resize**:
@@ -82,58 +90,16 @@ I have used the [albumentations](https://albumentations.readthedocs.io/en/latest
 
 ### Loss Function
 
-The loss function used is a weighted average of:
-- **L1 loss**: Handles the per pixel differences.
-- **Structural Similarity Index (SSIM)**: Handles luminance, contrast and structural differences.
-- **Edge Gradients**:  This computes the edges and tries to match the edges of the target and output. 
+#### BCE Logits Loss
+Not able to get the proper results with BCELogitsLoss. I have attempted multiple attempts to get the right Images.
 
-The overall loss was a summation of loss for mask and depth.
+- **Attempt 1**:- With Normalization, My Loss error shoots up to 3 trillion. I used my dataset with out normalization here, then i get my loss in 0.5 to 0.8. While training i have observed my loss is not reducing. Complete Dataset tarin with 64,64 Size Images upto 5 Epochs
 
-    loss = (w_ssim * l_ssim) + (w_depth * l_depth) + (w_edge * l_edge)
-    loss = loss_mask + loss_depth
+![`Input->Output->Pred`](Save_Model/BCELogits_Loss_64/Images.jpg?raw=true "Input->Output->Pred")
 
-We can get results by just using **L1 loss** too, but using **SSIM** and **Edge gradients** helps in converging faster.
+:point_right: In last epoch, i get very faded results compared to the ground truth images.
 
-**Huber loss** can also be used but I observed that the predictions are sharper when we use **L1 loss** instead of huber.
-
-**BCE loss** could construct the structure of the prediction but was not able to get a proper constrast for the mask and sharpness for mask and depth images.
-
-
-### Tensorboard
-
-We need some metrics to help us understand how the model is performing and to be able to compare two models. The notion of accuracy is different here because we have to compare two images.
-
-#### Root Mean Squared Error (RMS)
-- RMS is based on the per pixel differences.
-- This measure is in the context of the images being absolutely the same.
-- The lower the RMS error, the better the predictions
-
-Calculation:
-
-    rmse = torch.sqrt(torch.nn.MSELoss()(gt, pred))
-
-#### t < 1.25
-- The idea here is that, the pixel values need not be asolutely the same.
-- We take the ratio of each pixel and verify if it is within a scale of 1.25
-- This measure is in the context of the images being relatively the same.
-- The higher the `t<1.25` value, the better the predictions
-- Similarly calculate `t<1.25^2`  and `t<1.25^3`
-
-While calculating `t<1.25`, we want the ratio of pixels to be within a threshold i.e 1.25. But if the value of pixel is less than 0.1 then even though the pixel values are close the ratio scale changes.
-For ex, 0.00001 and 0.000001 are very close and we want them to contribute positively for our accuracy but the ratio is 10 which reduces the accuracy. So we clamp the tensors to 0.1 and 1.  
-
-Calculation:
-
-    gt = torch.clamp(gt, min=0.1, max=1)
-    pred = torch.clamp(pred, min=0.1, max=1)
-
-    thresh = torch.max((gt / pred), (pred / gt))
-
-    a1 = (thresh < 1.25   ).float().mean()
-    a2 = (thresh < 1.25 ** 2).float().mean()
-    a3 = (thresh < 1.25 ** 3).float().mean()
-
-Testing or validation file: [https://github.com/uday96/EVA4-TSAI/blob/master/S15/test.py](https://github.com/uday96/EVA4-TSAI/blob/master/S15/test.py)
+- **Attempt 1**:- As, I get very faded results in first attempt so I have used the image with high resolution 128, 128. So i trained the complete dataset on 128, 128 for 3 epochs by taking the previous weights.
 
 ### Training and Validation
 
