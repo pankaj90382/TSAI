@@ -4,10 +4,10 @@
 
 
 ### Objective
-In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, dense map from the  an image with foreground objects and background image, predict the depth map as well as a mask for the foreground object.
+In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, predict [denseDepth](https://github.com/ialhashim/DenseDepth/blob/master/DenseDepth.ipynb) map from an image with foreground objects and background image, mask for the foreground object as ground truth . In S15, apply various transformations and prepare the model to get the same groundtruths.
 
-### Dataset
-A custom dataset will be used to train this model, which consists of:
+### Dataset Info
+A custom dataset will be used to train model, which consists of:
 - 100 background images
 - 400k foreground overlayed on background images
 - 400k masks for the foreground overlayed on background images
@@ -17,34 +17,27 @@ Session 14 Link: [https://github.com/pankaj90382/TSAI/tree/master/S14](https://g
 
 #### Notations
 - Background image: **bg**
-- Foregroung overlayed on background: **fg_bg**
-- Mask for fg_bg: **fg_bg_mask**
-- Depth map for fg_bg: **fg_bg_depth**
-- Mask prediction: **mask_pred**
-- Depth map prediction: **depth_pred**
+- Foregroung overlayed on background: **fgbg**
+- Mask for fg_bg: **fgbgmask**
+- Depth map for fg_bg: **fgbgdepth**
+- Mask prediction: **pred_mask**
+- Depth map prediction: **pred_depth**
 
-### Model
-
-The inputs to the model are **bg** and **fg_bg**.
-- bg   : `[3 x 224 x 224]`
-- fg_bg: `[3 x 224 x 224]`
-
-The outputs of the model are **mask_pred** and **depth_pred**.
-- mask_pred: `[1 x 224 x 224]`
-- depth_pred: `[1 x 224 x 224]`
-
-Model definition file: [https://github.com/uday96/EVA4-TSAI/blob/master/S15/models/depth_and_mask_dnn.py](https://github.com/uday96/EVA4-TSAI/blob/master/S15/models/depth_and_mask_dnn.py)
-
-#### Architecture
+### Model Architecture 
 The model follows an combination of Densenet and Unet Architecture. The Densenet Structure to predict the mask images. The Unet structure to predict the dense images.
 - The encoder uses ResNet blocks to extract the visual features.
 - The decoder uses skip connections from the encoder and transpose convolutions to upscale the features and construct the mask and depth maps.
 
-<img src="Save_Model/Model.jpg" height="650">
+Model definition file: [Please refer to the Class UnetExp](https://github.com/pankaj90382/TSAI/blob/master/S15/S15_Modular_Code/Model.py)
+
+- The encoder uses ResNet blocks to extract the visual features.
+- The decoder uses skip connections from the encoder and transpose convolutions to upscale the features and construct the mask and depth maps.
+
+<img src="https://miro.medium.com/max/1400/1*OkUrpDD6I0FpugA_bbYBJQ.png" height="400">
 
 #### Model Structure and Parameters Count
 
-<img src="Save_Model/Model.jpg" height="650">
+<img src="Save_Model/Model.jpg" width="600">
 
 ### Parameters and Hyperparameters
 
