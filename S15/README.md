@@ -44,7 +44,7 @@ Model definition file: [Please refer to the Class UnetExp](https://github.com/pa
 
 <img src="Save_Model/Model.jpg" width="600">
 
-### Parameters and Hyperparameters
+### Hyperparameters
 
 -   Optimizer: SGD
 -   Scheduler: StepLR
@@ -98,9 +98,8 @@ We can get results by just using **L1 loss** too, but using **SSIM** and **Edge 
 
 **BCE loss** could construct the structure of the prediction but was not able to get a proper constrast for the mask and sharpness for mask and depth images.
 
-Loss function file: [https://github.com/uday96/EVA4-TSAI/blob/master/S15/loss.py](https://github.com/uday96/EVA4-TSAI/blob/master/S15/loss.py)
 
-### Accuracy Metrics
+### Tensorboard
 
 We need some metrics to help us understand how the model is performing and to be able to compare two models. The notion of accuracy is different here because we have to compare two images.
 
