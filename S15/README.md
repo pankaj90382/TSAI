@@ -25,15 +25,20 @@ Session 14 Link: [https://github.com/pankaj90382/TSAI/tree/master/S14](https://g
 
 ### Model Architecture 
 The model follows an combination of Densenet and Unet Architecture. The Densenet Structure to predict the mask images. The Unet structure to predict the dense images.
-- The encoder uses ResNet blocks to extract the visual features.
-- The decoder uses skip connections from the encoder and transpose convolutions to upscale the features and construct the mask and depth maps.
 
-Model definition file: [Please refer to the Class UnetExp](https://github.com/pankaj90382/TSAI/blob/master/S15/S15_Modular_Code/Model.py)
-
-- The encoder uses ResNet blocks to extract the visual features.
-- The decoder uses skip connections from the encoder and transpose convolutions to upscale the features and construct the mask and depth maps.
+#### Unet
+- First path in Unet is contraction path (also called as the encoder) which is used to capture the context in the image.
+- Second path in Unet is symmetric expanding path (also called as the decoder) which is used to enable precise localization using transposed convolutions. 
 
 <img src="https://miro.medium.com/max/1400/1*OkUrpDD6I0FpugA_bbYBJQ.png" height="400">
+
+#### Densenet
+- Densenet connects each layer to every other layer in a feed-forward fashion.
+- For each layer, the feature-maps of all preceding layers are used as inputs, and its own feature-maps are used as inputs into all subsequent layers.
+<img src="https://miro.medium.com/max/1400/1*_Y7-f9GpV7F93siM1js0cg.jpeg" height="250">
+
+### My model
+Model definition file: [Please refer to the Class UnetExp](https://github.com/pankaj90382/TSAI/blob/master/S15/S15_Modular_Code/Model.py)
 
 #### Model Structure and Parameters Count
 
@@ -41,36 +46,39 @@ Model definition file: [Please refer to the Class UnetExp](https://github.com/pa
 
 ### Parameters and Hyperparameters
 
--   Optimizer: Adam
+-   Optimizer: SGD
 -   Scheduler: StepLR
 -   Batch Size:
-	- 64 for `64x64` and `128x128`
-	- 16 for `224x224`
--   Dropout: 0.2
--   L2 decay: 0.0001
+	- 100 for `64x64`
+	- 32 for `128x128`
+	- 12 for `224x224`
+-   Dropout: 0.02
+-   L2 decay: 0.001
+
+### Load to Colab, DataSet, Dataloader
+Great thanks to 7z, Pathlib library to read the data from the google drive. 7z to load the data from the google drive to colab in 10 minutes without uploading zip file to colab. I can choose how many samples i need to load to the colab. 13 Gb data converted to 2 Gb in compress format. Pathlib library enables me to load all my bg, fgbg, fgbgdepth, fgbgmask fromone list. I need not to create the 4 lists. From the one list i am able to load my images to GPU. However, there is a challenge to not to replicate bg files upto 400k times which is also achieved by using the Pathlib library. The dataloader is simple to load all the files to GPU. I have created the dataset with two dict, one is input and another is target which again contanins bg, fgbg and fgbgmask and fgbgdepth images.
 
 ### Image Augmentation
+I have used the [albumentations](https://albumentations.readthedocs.io/en/latest/api/augmentations.html) library for augmentation. There is small anomaly when you load the grayscale images like fgbgmask and fgbgdense by using albumenations. The image shape is when you read through PIL is (H, W). By default the Albumenations need the channel also. I converted grayscale images to nd array to create the one new dimension.
+
 - **Resize**:
 	- Downscale the images to be able to train for lower dimensions first.
 	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
-- **RGBShift** & **HueSaturationValue**:
+- **RandomBrightnessContrast** & **HueSaturationValue**:
 	- Used to reduce the dependency on image colours for prediction.
-	- One of these was applied randomly to **bg** and **fgbg** images.
+	- One of these was applied randomly to **bg, fgbg, fgbgmask and fgbgdense** images.
 - **ShiftScaleRotate**:
-	- Translate, scale and rotate to **bg** and **fgbg** images.
-- **Horizontal & Vertical Flip**:
-	- Images were flipped randomly, both horizontally and vertically
+	- Translate, scale and rotate to **bg, fgbg, fgbgmask and fgbgdense** images.
+- **'GridDistortion'**:
+	- Grid analysis estimates the distortion from a checkerboard or thin line grid
 	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
-	- Here, the same flip operations were applied on all the 4 images to maintain the orientation.
-- **RandomRotate**:
-	- Images were randomly rotated within (-15,15) degrees.
-	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
-	- Here, all the 4 images were rotated in the same direction and angle to maintain the orientation.
-- **CoarseDropout**:
-	- Used to force the network to extract more features by cutting out some parts of the image
-	-  Applied randomly to **bg** and **fg_bg** images.
+- **RandomRotate90**:
+	- Images were randomly rotated within 90 degrees.
+	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
+- **ToGray**:
+	- Used to convert RGB images to GrayScale for faster processing.
+	-  Applied to all **bg** and **fgbg** images.
 
-Image augmentation file: [https://github.com/uday96/EVA4-TSAI/blob/master/S15/data/data_transforms.py](https://github.com/uday96/EVA4-TSAI/blob/master/S15/data/data_transforms.py)
 
 ### Loss Function
 
