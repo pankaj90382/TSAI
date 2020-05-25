@@ -160,24 +160,34 @@ In the BCELoss, i got the nan loss and the prediction is totaly blank after 600 
 
 :+1: Visually Good Images, better than other losses. I trained on even bigger resolution like 224 *224.
 
-- **Attempt 3**:- As, I get very faded results in first attempt so I have used the image with high resolution 128, 128. So i trained the complete dataset on 128, 128 for 3 epochs by taking the previous weights.
+- **Attempt 3**:- I have used the image with high resolution 224, 224. So i trained the complete dataset on for 1 epochs by taking the previous weights. 
 
 <figure>
-    <figcaption>Inputs->BG->FGBG</figcaption>
-    <img src='Save_Model/BCE_Logits_Loss_128/Input.jpg' alt='missing' />
+    <figcaption>Inputs->BG</figcaption>
+    <img src='Save_Model/MSE_Loss_224/Input_bg.jpg' alt='missing' />
 </figure>
 
 <figure>
-    <figcaption>Outputs->DENSEDEPTH->FGBGMASK</figcaption>
-    <img src='Save_Model/BCE_Logits_Loss_128/Actual.jpg' alt='missing' />
+    <figcaption>Inputs->FGBG</figcaption>
+    <img src='Save_Model/MSE_Loss_224/Input_FgBg.jpg' alt='missing' />
 </figure>
 
 <figure>
-    <figcaption>Preds->DENSEDEPTH->FGBGMASK</figcaption>
-    <img src='Save_Model/BCE_Logits_Loss_128/Pred.jpg' alt='missing' />
+    <figcaption>Preds->FGBGMASK</figcaption>
+    <img src='Save_Model/MSE_Loss_224/Pred_Mask.jpg' alt='missing' />
 </figure>
 
-:point_right: In this one also, i am not getting good results. I have tried the another loss function
+<figure>
+    <figcaption>Preds->DENSEDEPTH</figcaption>
+    <img src='Save_Model/MSE_Loss_224/Pred_Dense.jpg' alt='missing' />
+</figure>
+
+<figure>
+    <figcaption>Preds->DENSEDEPTH</figcaption>
+    <img src='Save_Model/MSE_Loss_224/Output_Dense.jpg' alt='missing' />
+</figure>
+
+:point_right: The mask output visually clears. The depth image seems to be fadded. Need to train more on the same loss.
 
 
 ### Training and Validation
@@ -185,9 +195,9 @@ In the BCELoss, i got the nan loss and the prediction is totaly blank after 600 
 The model was first trained on smaller resolutions of `64x64` first. Then trained on `128x128` and finally on `224x224`for faster convergence.
 
 Since there are storage and compute restrictions on colab, I was not able to use large batch sizes for higher resolutions and this in turn was increasing the time taken per epoch.
-To handle this, I was saving the predictions and model after a chunk of batches to be able to monitor the progress while running for a small number of epochs. Using the saved model, I could again load it and continue training the model.
+To handle this, I was saving the predictions and model in the Tensorboard. I am able to visualize the looses like mask loss and dense loss and total loss in real time. The images after some batches will go the tensorboard. Using the saved model, I could again load it and continue training the model.
 
-For `224x224` each epoch was taking ~2hrs to train. So I was able to train it for 3 epochs at a stretch, save the model and resume training later.
+For `224x224` each epoch was taking ~7hrs to train. So I was able to train it for 1 epochs at a stretch, save the model and resume training later.
 
 
 ### Tensorboard
