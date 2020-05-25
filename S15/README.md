@@ -4,7 +4,7 @@
 
 
 ### Objective
-In S14, Given an image with foreground objects and background image, predict the depth map as well as a mask for the foreground object.
+In S14, Prepared the dataset of school images consisting of background, background images with foreground objects, dense map from the  an image with foreground objects and background image, predict the depth map as well as a mask for the foreground object.
 
 ### Dataset
 A custom dataset will be used to train this model, which consists of:
@@ -13,9 +13,7 @@ A custom dataset will be used to train this model, which consists of:
 - 400k masks for the foreground overlayed on background images
 - 400k depth maps for the foreground overlayed on background images
 
-Dataset Link: https://drive.google.com/file/d/1KY-6ndddnDSXTp974YeubFKEMTbKmqiH/view?usp=sharing
-
-Dataset Creation: [https://github.com/uday96/EVA4-TSAI/tree/master/S14-15](https://github.com/uday96/EVA4-TSAI/tree/master/S14-15)
+Session 14 Link: [https://github.com/pankaj90382/TSAI/tree/master/S14](https://github.com/pankaj90382/TSAI/tree/master/S14)
 
 #### Notations
 - Background image: **bg**
@@ -38,24 +36,15 @@ The outputs of the model are **mask_pred** and **depth_pred**.
 Model definition file: [https://github.com/uday96/EVA4-TSAI/blob/master/S15/models/depth_and_mask_dnn.py](https://github.com/uday96/EVA4-TSAI/blob/master/S15/models/depth_and_mask_dnn.py)
 
 #### Architecture
-The model follows an encoder-decoder architecture. It consists of a common encoder and two decoders, for mask prediction and depth map prediction respectively.
+The model follows an combination of Densenet and Unet Architecture. The Densenet Structure to predict the mask images. The Unet structure to predict the dense images.
 - The encoder uses ResNet blocks to extract the visual features.
 - The decoder uses skip connections from the encoder and transpose convolutions to upscale the features and construct the mask and depth maps.
 
-<img src="images/dnn_architecture.png" height="650">
+<img src="Save_Model/Model.jpg" height="650">
 
-#### Parameters Count
+#### Model Structure and Parameters Count
 
-    --------------------------------------------------
-    Total params: 3,165,170
-    Trainable params: 3,165,170
-    Non-trainable params: 0
-    --------------------------------------------------
-    Input size (MB): 1.15
-    Forward/backward pass size (MB): 31581162963630.00
-    Params size (MB): 12.07
-    Estimated Total Size (MB): 31581162963643.22
-    --------------------------------------------------
+<img src="Save_Model/Model.jpg" height="650">
 
 ### Parameters and Hyperparameters
 
@@ -70,12 +59,12 @@ The model follows an encoder-decoder architecture. It consists of a common encod
 ### Image Augmentation
 - **Resize**:
 	- Downscale the images to be able to train for lower dimensions first.
-	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
+	- Applied on **bg**, **fgbg**, **fgbgmask** and **fgbgdepth**.
 - **RGBShift** & **HueSaturationValue**:
 	- Used to reduce the dependency on image colours for prediction.
-	- One of these was applied randomly to **bg** and **fg_bg** images.
-- **GaussNoise**:
-	- Gaussian noise was applied randomly to **bg** and **fg_bg** images.
+	- One of these was applied randomly to **bg** and **fgbg** images.
+- **ShiftScaleRotate**:
+	- Translate, scale and rotate to **bg** and **fgbg** images.
 - **Horizontal & Vertical Flip**:
 	- Images were flipped randomly, both horizontally and vertically
 	- Applied on **bg**, **fg_bg**, **fg_bg_mask** and **fg_bg_depth**.
