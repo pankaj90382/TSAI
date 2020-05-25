@@ -1,6 +1,6 @@
 # S15 - Monocular Depth Estimation on School Image Set
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/pankaj90382/TSAI/blob/master/S15/Save_Model/MSE_Loss_128/MSE_Loss_128.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI/blob/master/S15/Save_Model/MSE_Loss_128/MSE_Loss_128.ipynb)
 
 
 ### Objective
@@ -210,8 +210,8 @@ TensorBoard provides the visualization and tooling needed for deep learning expe
 
 Tensorboard is easy to apply in the code. In the colab, by following code will help you to show the tensorboard on screen. Later on you can save the files to your drive. It can be downloaded also. It can be showable.
 
-`%load_ext tensorboard
-%tensorboard --logdir '/content/tensorboard/'`
+`%load_ext tensorboard`
+`%tensorboard --logdir '/content/tensorboard/'`
 
 You will be able to visualize the multiple looses and images at one place.
 
@@ -225,6 +225,9 @@ You will be able to visualize the multiple looses and images at one place.
     <img src='Save_Model/tensorboard_images.JPG' alt='missing' />
 </figure>
 
+All Models with Tensorboard Loaded
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/pankaj90382/TSAI/blob/master/S15/tensorboard_loaded.ipynb)
+
 # Refrences
 
-- Tensorboard files
+- Tensorboard & ipynb files - [https://drive.google.com/drive/folders/1whSjm-pVljmrna3u5TMqoAGW7uLWYJLy?usp=sharing](https://drive.google.com/drive/folders/1whSjm-pVljmrna3u5TMqoAGW7uLWYJLy?usp=sharing)
